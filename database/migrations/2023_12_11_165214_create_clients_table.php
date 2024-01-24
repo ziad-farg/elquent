@@ -11,6 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
+        // Define the 'clients' table schema with required columns
         Schema::create('clients', function (Blueprint $table) {
             $table->id();
             $table->string('first_name');

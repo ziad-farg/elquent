@@ -21,6 +21,7 @@ class StoreClientRequest extends FormRequest
      */
     public function rules(): array
     {
+        // Define the validation rules for the request fields.
         return [
             'first_name' => 'required|string|min:3',
             'last_name' => 'required|string|min:3',

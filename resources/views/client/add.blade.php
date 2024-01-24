@@ -1,9 +1,13 @@
 @extends('layout.master')
 @section('content')
     <div class="container mt-5">
+        <!-- Display the heading for adding a new category -->
         <h2>Add new category</h2>
+
+        <!-- Include a reusable form component with specified attributes -->
         <x-form action="{{ route('client.store') }}" method="POST" enctype="multipart/form-data">
-            {{-- @csrf --}}
+
+            <!-- Input field for 'First Name' with label, error handling, and value from old input -->
             <div class="mb-3">
                 <x-label for="first_name" class="form-label" name="First Name" />
                 <x-input type="text" class="form-control" id="first_name" name="first_name"
@@ -12,6 +16,8 @@
                     {{ $message }}
                 @enderror
             </div>
+
+            <!-- Input field for 'Last Name' with label, error handling, and value from old input -->
             <div class="mb-3">
                 <x-label for="last_name" class="form-label" name="Last Name" />
                 <x-input type="text" class="form-control" id="last_name" name="last_name"
@@ -20,6 +26,8 @@
                     {{ $message }}
                 @enderror
             </div>
+
+            <!-- Input field for 'E-mail' with label, error handling, and value from old input -->
             <div class="mb-3">
                 <x-label for="email" class="form-label" name="E-mail" />
                 <x-input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}" />
@@ -27,6 +35,8 @@
                     {{ $message }}
                 @enderror
             </div>
+
+            <!-- Input field for 'Phone' with label, error handling, and value from old input -->
             <div class="mb-3">
                 <x-label for="phone" class="form-label" name="Phone" />
                 <x-input type="text" class="form-control" id="phone" name="phone" value="{{ old('phone') }}" />
@@ -34,15 +44,5 @@
                     {{ $message }}
                 @enderror
             </div>
-            <div class="mb-3">
-                <x-label for="avatar" class="form-label" name="Image" />
-                <x-input class="form-control" type="file" id="avatar" name="avatar" />
-                @error('avatar')
-                    {{ $message }}
-                @enderror
-            </div>
-            <x-Button color="success" name='Save' type="submit" />
-            <x-AnchorButton href="{{ route('client.index') }}" color="primary" name="Cancel" />
-        </x-form>
-    </div>
-@endsection
+
+            <!-- Input field for 'Image' (avatar) with label, error h

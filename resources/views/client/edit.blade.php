@@ -2,9 +2,13 @@
 @section('content')
     <div class="container mt-5">
         <h2>Edit client</h2>
+
+        <!-- Display current client avatar with styling -->
         <div>
             <img width="300" src="{{ asset('storage/' . $client->avatar) }}" alt="" id="avatarPreview">
         </div>
+
+        <!-- Form for editing client information -->
         <x-form action="{{ route('client.update', $client->id) }}" method="POST" enctype="multipart/form-data">
             @method('PUT')
             <div class="mb-3">
@@ -46,27 +50,31 @@
                     {{ $message }}
                 @enderror
             </div>
+
+            <!-- Button to submit the form with success color -->
             <x-button type="submit" color="success" name="Save" />
+
+            <!-- Anchor button to cancel and redirect to the client index page with primary color -->
             <x-AnchorButton href="{{ route('client.index') }}" color="primary" name="Cancel" />
         </x-form>
     </div>
-@endsection
 
-{{-- when change the image preview the image live --}}
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const avatarInput = document.getElementById('avatar');
-        const avatarPreview = document.getElementById('avatarPreview');
+    <!-- Script for updating the image preview live when changing the image -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const avatarInput = document.getElementById('avatar');
+            const avatarPreview = document.getElementById('avatarPreview');
 
-        avatarInput.addEventListener('change', function(event) {
-            const file = event.target.files[0];
-            const reader = new FileReader();
+            avatarInput.addEventListener('change', function(event) {
+                const file = event.target.files[0];
+                const reader = new FileReader();
 
-            reader.onload = function(e) {
-                avatarPreview.src = e.target.result;
-            };
+                reader.onload = function(e) {
+                    avatarPreview.src = e.target.result;
+                };
 
-            reader.readAsDataURL(file);
+                reader.readAsDataURL(file);
+            });
         });
-    });
-</script>
+    </script>
+@endsection
